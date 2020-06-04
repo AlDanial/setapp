@@ -1,0 +1,11 @@
+# setapp
+# Copyright 2020
+# Al Danial
+# Tom Kowalski
+
+gcc :
+  os :
+    Linux :
+      kernel :
+        5.4.0 :
+          PATH : /usr/lib
