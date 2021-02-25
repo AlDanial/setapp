@@ -13,3 +13,4 @@ Dependencies:
  * boost-filesystem (Ubuntu: ``apt install libboost-filesystem-dev``)
  * [fmt](https://github.com/fmtlib/fmt) (Ubuntu: ``apt install libfmt-dev``)
  * [yaml-cpp](https://github.com/jbeder/yaml-cpp) (Ubuntu: ``apt install libyaml-cpp-dev``)
+ * Xcode Developer Tools (Mac: App Store)
