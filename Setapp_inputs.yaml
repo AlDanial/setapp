@@ -2,10 +2,45 @@
 # Copyright 2020
 # Al Danial
 # Tom Kowalski
+# Steve Schwarzbek
+# David Moreno
 
-gcc :
-  os :
-    Linux :
-      kernel :
-        5.4.0 :
-          PATH : /usr/lib
+# Environment variables can be set three ways
+#    NAME : [ ':', VALUE ]   #1  NAME=$NAME:VALUE
+#    NAME : [ VALUE, ':' ]   #2  NAME=VALUE:$NAME
+#    NAME : [ VALUE ]        #3  NAME=VALUE
+
+OS_alias :
+    Linux/5.4.0-54-generic          : Ubuntu_20.04
+    Linux/3.10                      : RHEL7
+    Linux/3.10.0-123.el7.x86_64     : RHEL7.0
+    Linux/3.10.0-862.2.3.el7.x86_64 : RHEL7.5
+
+application :
+
+  matlab :
+    name: MATLAB/Simulink
+    info: https://my.company.com/matlab.html
+    category: math
+    os:
+
+      Linux/5.4.0-54-generic :
+        2018a:
+          env:
+            PATH : [ ':', /usr/local/matlab/2018a/bin ]
+            LM_LICENSE_FILE : [ ':' , 1234@lic_server ]
+          csh_alias:
+          sh_alias:
+          sh_fn:
+
+      Ubuntu_20.04 :
+        2018b:
+          env:
+            PATH : [ ':', /usr/local/matlab/2018b/bin ]
+            LM_LICENSE_FILE : [ ':' , 1234@lic_server ]
+          csh_alias:
+          sh_alias:
+          sh_fn:
+
+      FreeBSD :
+      MacOSX :
