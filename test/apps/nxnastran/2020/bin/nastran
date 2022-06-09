@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+import sys
+sys.path.append('../../../..')
+import common_functions as CF
+
+VERSION = '2020'
+args = CF.parse_args("Fake NX/NASTRAN")
+if args.version:
+    print(f'OK {VERSION}')
+

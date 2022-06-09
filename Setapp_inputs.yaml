@@ -1,46 +1,67 @@
-# setapp
-# Copyright 2020
-# Al Danial
-# Tom Kowalski
-# Steve Schwarzbek
-# David Moreno
+OS_aliases :   # uname -r
+  5.13.0-40-generic : Ubuntu_20.04
+  3.13.0-37-generic : Ubuntu_16.04
+  3.10.0-693.el7.x86_64 : RHEL_7.4
+  3.10.0-1127.13.1.el7.x86_64 : RHEL_7.8
 
-# Environment variables can be set three ways
-#    NAME : [ ':', VALUE ]   #1  NAME=$NAME:VALUE
-#    NAME : [ VALUE, ':' ]   #2  NAME=VALUE:$NAME
-#    NAME : [ VALUE ]        #3  NAME=VALUE
-
-OS_alias :
-    Linux/5.4.0-54-generic          : Ubuntu_20.04
-    Linux/3.10                      : RHEL7
-    Linux/3.10.0-123.el7.x86_64     : RHEL7.0
-    Linux/3.10.0-862.2.3.el7.x86_64 : RHEL7.5
-
-application :
-
-  matlab :
-    name: MATLAB/Simulink
-    info: https://my.company.com/matlab.html
-    category: math
-    os:
-
-      Linux/5.4.0-54-generic :
-        2018a:
-          env:
-            PATH : [ ':', /usr/local/matlab/2018a/bin ]
-            LM_LICENSE_FILE : [ ':' , 1234@lic_server ]
-          csh_alias:
-          sh_alias:
-          sh_fn:
-
+matlab :                                                    # {{{
+  name : MATLAB/Simulink
+  category : [ language, math, simulation, visualization, prototyping ]
+  help : someone@some.place.com, 1(310)555-5555
+  default : 2022a
+  ver :
+    2022a :
       Ubuntu_20.04 :
-        2018b:
-          env:
-            PATH : [ ':', /usr/local/matlab/2018b/bin ]
-            LM_LICENSE_FILE : [ ':' , 1234@lic_server ]
-          csh_alias:
-          sh_alias:
-          sh_fn:
+        env :
+          - PATH+ : /usr/local/matlab/2022a/bin
+          - LM_LICENSE_FILE : 1875@spaw
+          - ARCH! : glnxa64
+          - MANPATH : /usr/local/matlab/2022a/sys/java/jre/glnxa64/jre/man
+    2020b :
+      Ubuntu_20.04 :
+        env :
+          - PATH+ : /usr/local/matlab/2020b/bin
+          - LM_LICENSE_FILE : 1875@spaw
+          - ARCH! : glnxa64
+          - MANPATH : /usr/local/matlab/2020b/sys/java/jre/glnxa64/jre/man
+# }}}
+python :                                                     # {{{
+  name : Python
+  category : [ language, math, simulation, visualization, prototyping, web ]
+  help : someone@some.place.com, 1(310)555-5555
+  default : 2021.05
+  ver :
+    2021.05 :
+      Ubuntu_20.04 :
+        env :
+          - PATH+ : /usr/local/anaconda3/2021.05/bin
+          - PATH+ : /usr/local/anaconda3/2021.05/condabin
+          - MANPATH : /usr/local/anaconda3/2021.05/share/man
+    2020.07 :
+      Ubuntu_20.04 :
+        env :
+          - PATH+ : /usr/local/anaconda3/2020.07/bin
+          - PATH+ : /usr/local/anaconda3/2020.07/condabin
+          - MANPATH : /usr/local/anaconda3/2020.07/share/man
+    2020.02 :
+      Ubuntu_20.04 :
+        env :
+          - PATH+ : /usr/local/anaconda3/2020.02/bin
+          - PATH+ : /usr/local/anaconda3/2020.02/condabin
+          - MANPATH : /usr/local/anaconda3/2020.02/share/man
 
-      FreeBSD :
-      MacOSX :
+# }}}
+hdfview :                                                    # {{{
+  name : HDFView
+  category : [ visualization ]
+  help : someone@some.place.com, 1(310)555-5555
+  default : 3.0.0
+  ver :
+    3.0.0 :
+      Ubuntu_20.04 :
+        doc : /usr/local/HDFView/3.0.0/share/doc/javadocs/index-all.html
+        env :
+          - PATH : /usr/local/HDFView/3.0.0
+          - MANPATH : /usr/local/anaconda3/2021.05/share/man
+
+# }}}

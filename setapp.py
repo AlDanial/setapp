@@ -9,7 +9,7 @@ import pathlib
 from rich import print
 import pprint ; pp = pprint.PrettyPrinter(indent=2)
 
-SETAPP_CONFIG_FILE = '/home/al/apps/setapp/new_setapp_inputs.yaml'
+SETAPP_CONFIG_FILE = '/home/al/git.repos/setapp/Setapp_inputs.yaml'
 OS_alias = { '3.13.0-37-generic' : 'Ubuntu_16.04' } # updated in load_app_file()
 This_OS  = None
 
@@ -275,11 +275,13 @@ def app_exists(data, app_ver):                              # {{{
 
     if '/' in app_ver:
         app, ver = app_ver.split('/')
+    elif app_ver not in data:
+        return None, None, f'{app_ver} is not a known application'
     else:
         app, ver = app_ver, data[app_ver]['default']
 
     if  app not in data:
-        err = f'{app} is not defined'
+        err = f'{app} is not a known application'
     elif ver not in data[app]['ver']:
         err = f'{app}/{ver} is not defined'
     elif This_OS not in data[app]['ver'][ver]:
